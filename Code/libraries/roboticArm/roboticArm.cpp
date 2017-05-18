@@ -9,13 +9,12 @@
 #include <Servo.h>
 
 roboticArm::roboticArm(	int phiServoPin,
-						int firstServoPin,
-						int secServoPin,
-						int electroMagnetPin,
-						float length1,
-						float length2,
-						float length3
-						){
+					int firstServoPin,
+					int secServoPin,
+					int electroMagnetPin,
+					float length1,
+					float length2,
+					float length3){
 	
 	_phiServoPin=phiServoPin;
 	_phiServo.attach(_phiServoPin);
@@ -43,31 +42,31 @@ void roboticArm::setArmPosn(double r,double theta,double phi){
 							(2*_length2*_length3)
 						);
 	double firstAngle=asin(
-								(	_length3*_length3
-									+ r*r
-									- _length1*_length1
-									- _length2*_length2
-								)
-								/
-								(	2
-									* sqrt(		_length1*_length1*_length2*_length2
-												+ r*r*_length3*_length3
-												- 2*r*_length1*_length2*_length3*cos(theta+secAngle)												
-										   )
-								)
-						  )
-						  +
-						asin(
-								(	r*_length3*sin(theta+secAngle)
-								)
-								/
-								(	sqrt(		
-											_length1*_length1*_length2*_length2
+							(	_length3*_length3
+								+ r*r
+								- _length1*_length1
+								- _length2*_length2
+							)
+							/
+							(	2
+								* sqrt(		_length1*_length1*_length2*_length2
 											+ r*r*_length3*_length3
 											- 2*r*_length1*_length2*_length3*cos(theta+secAngle)												
-										)
-								)
-							);
+									   )
+							)
+						  )
+						  +
+					asin(
+							(	r*_length3*sin(theta+secAngle)
+							)
+							/
+							(	sqrt(		
+										_length1*_length1*_length2*_length2
+										+ r*r*_length3*_length3
+										- 2*r*_length1*_length2*_length3*cos(theta+secAngle)												
+									)
+							)
+						);
 	_firstServo.write(firstAngle);
 	_secServo.write(secAngle);	
 	_phiServo.write(phi);
