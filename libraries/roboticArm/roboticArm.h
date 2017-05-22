@@ -22,7 +22,7 @@ class roboticArm{
 		void setElectoMagnetState(bool state);
 		
 	private:
-		int _phiServoPin,_firstServoPin,_secSeroPin,_electroMagnetPin;
+		int _phiServoPin,_firstServoPin,_secServoPin,_electroMagnetPin;
 		float _length1,_length2,_length3;
 		Servo _phiServo,_firstServo,_secServo;
 };
