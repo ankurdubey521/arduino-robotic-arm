@@ -2,14 +2,14 @@
 
 #define pi 3.14159265
 
-roboticArm prototypeArm(2,3,4,5,10,10,10);
+roboticArm prototypeArm(2,3,4,5,0.015,0.15,0.15);
 
 void setup(){
 }
 void loop(){
-  for(int i=0;i<180;++i){
+    for(float i=0;i<3.14;i=i+pi/6){
     prototypeArm.setServoAngle(i,i,i);
-    delay(1000);
+    delay(100);
   }
 }
 
